@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Prawin Gandhi D — AI Developer Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            color-scheme: light;
+            --bg: #f7faff;
+            --card: #ffffff;
+            --text: #0c1a3a;
+            --muted: #54627f;
+            --accent: #2f5bea;
+            --accent2: #0c1a3a;
+            --sky: #dce8ff;
+            --line: #e1eafb;
+            --chip: #eaf1ff;
+            box-sizing: border-box;
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px)
+        }
+
+        html {
+            scroll-padding-top: env(safe-area-inset-top, 0px);
+            scroll-behavior: smooth
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font: 16px/1.65 Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif
+        }
+
+        .wrap,
+        .hwrap {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 0 22px
+        }
+
+        nav {
+            position: sticky;
+            top: env(safe-area-inset-top, 0px);
+            background: rgba(247, 250, 255, .92);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--line);
+            z-index: 5
+        }
+
+        nav .wrap {
+            display: flex;
+            gap: 22px;
+            overflow-x: auto;
+            padding: 13px 22px;
+            white-space: nowrap
+        }
+
+        nav a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 13.5px;
+            font-weight: 500;
+            letter-spacing: .3px
+        }
+
+        nav a:hover {
+            color: var(--accent)
+        }
+
+        header {
+            padding: 78px 0 56px;
+            background: radial-gradient(520px 260px at 85% 0%, #cfe0ff 0%, transparent 70%), radial-gradient(420px 240px at 0% 100%, #e3ecff 0%, transparent 70%), linear-gradient(180deg, #fff, #f1f6ff);
+            border-bottom: 1px solid var(--line)
+        }
+
+        .kicker {
+            display: inline-block;
+            background: var(--chip);
+            color: var(--accent);
+            border-radius: 999px;
+            padding: 4px 14px;
+            font-size: 12.5px;
+            font-weight: 600;
+            letter-spacing: .6px;
+            margin-bottom: 16px
+        }
+
+        h1 {
+            font: 700 clamp(2.3rem, 7vw, 3.6rem)/1.08 "Playfair Display", Georgia, serif;
+            margin: 0 0 8px;
+            color: var(--accent2)
+        }
+
+        h1 span {
+            color: var(--accent)
+        }
+
+        .role {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin: 0 0 16px
+        }
+
+        .lead {
+            color: var(--muted);
+            max-width: 640px;
+            margin: 0 0 26px
+        }
+
+        .btns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 999px;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            background: #fff;
+            transition: .2s
+        }
+
+        .btn.p {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 6px 16px rgba(47, 91, 234, .28)
+        }
+
+        .btn:hover {
+            transform: translateY(-2px)
+        }
+
+        section {
+            padding: 38px 0 14px
+        }
+
+        h2 {
+            font: 600 1.7rem "Playfair Display", Georgia, serif;
+            margin: 0 0 20px;
+            color: var(--accent2)
+        }
+
+        h2:after {
+            content: "";
+            display: block;
+            width: 44px;
+            height: 3px;
+            border-radius: 3px;
+            background: linear-gradient(90deg, var(--accent), #8db0ff);
+            margin-top: 8px
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 18px
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 22px;
+            box-shadow: 0 4px 18px rgba(47, 91, 234, .06);
+            transition: .25s
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(47, 91, 234, .14);
+            border-color: #bcd0fb
+        }
+
+        .card h3 {
+            margin: 0 0 4px;
+            font-size: 1.05rem;
+            color: var(--accent2)
+        }
+
+        .card p {
+            margin: 0 0 10px;
+            color: var(--muted);
+            font-size: 14.5px
+        }
+
+        .card ul {
+            margin: 10px 0 14px;
+            padding-left: 18px;
+            font-size: 14.5px;
+            color: #26365a
+        }
+
+        .card li {
+            margin-bottom: 4px
+        }
+
+        .tag {
+            display: inline-block;
+            background: var(--chip);
+            color: var(--accent);
+            border-radius: 999px;
+            padding: 3px 11px;
+            font-size: 12px;
+            font-weight: 500;
+            margin: 0 4px 5px 0
+        }
+
+        .meta {
+            font-size: 13px;
+            color: var(--muted)
+        }
+
+        .tl {
+            border-left: 2px solid var(--sky);
+            padding-left: 22px;
+            margin-left: 5px
+        }
+
+        .tl .item {
+            margin-bottom: 22px;
+            position: relative
+        }
+
+        .tl .item:before {
+            content: "";
+            position: absolute;
+            left: -29px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 4px var(--sky)
+        }
+
+        .tl h3 {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--accent2)
+        }
+
+        footer {
+            padding: 40px 0 54px;
+            color: var(--muted);
+            font-size: 14px;
+            border-top: 1px solid var(--line);
+            margin-top: 30px;
+            text-align: center
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="wrap"><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a
+                href="#experience">Experience</a><a href="#education">Education</a><a href="#contact">Contact</a></div>
+    </nav>
+    <header id="about">
+        <div class="hwrap">
+            <span class="kicker">AVAILABLE FOR NEW OPPORTUNITIES</span>
+            <h1>Prawin <span>Gandhi D</span></h1>
+            <p class="role">AI Developer · Generative AI · LLM &amp; RAG Systems</p>
+            <p class="lead">I build production LLM applications: RAG pipelines, agentic workflows with LangGraph, and
+                the FastAPI backends that ship them. Based in Chennai, India, with a Python backend foundation and
+                hands-on delivery from data extraction to deployed APIs.</p>
+            <div class="btns"><a class="btn p" href="mailto:prawingandhi03@gmail.com">Email me</a><a class="btn"
+                    href="https://linkedin.com/in/prawingandhi">LinkedIn</a><a class="btn"
+                    href="tel:+919786581067">Call</a></div>
+        </div>
+    </header>
+    <div class="wrap">
+
+        <section id="skills" class="skills">
+            <h2>Skills</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Generative AI</h3><span class="tag">LLM Pipelines</span><span class="tag">RAG</span><span
+                        class="tag">LangChain</span><span class="tag">LangGraph</span><span class="tag">MCP</span><span
+                        class="tag">Agentic AI</span><span class="tag">LoRA / QLoRA</span><span class="tag">Prompt
+                        Engineering</span><span class="tag">HuggingFace</span>
+                </div>
+                <div class="card">
+                    <h3>Machine &amp; Deep Learning</h3><span class="tag">Scikit-learn</span><span
+                        class="tag">TensorFlow</span><span class="tag">Regression</span><span
+                        class="tag">Classification</span><span class="tag">ANN / CNN / RNN / LSTM</span><span
+                        class="tag">NLP</span><span class="tag">Transformers</span><span class="tag">MLOps</span>
+                </div>
+                <div class="card">
+                    <h3>Backend &amp; Data</h3><span class="tag">Python</span><span class="tag">FastAPI</span><span
+                        class="tag">REST APIs</span><span class="tag">SQL</span><span class="tag">MySQL</span><span
+                        class="tag">MongoDB</span><span class="tag">Pinecone</span><span class="tag">Pandas</span><span
+                        class="tag">NumPy</span>
+                </div>
+                <div class="card">
+                    <h3>Tools &amp; Platforms</h3><span class="tag">AWS</span><span class="tag">Azure</span><span
+                        class="tag">Git / GitHub</span><span class="tag">Playwright</span><span class="tag">Google
+                        OR-Tools</span><span class="tag">Google Maps API</span><span class="tag">Google Colab</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Attendance Management Backend</h3>
+                    <p class="meta">Face-recognition attendance &amp; HR platform · FastAPI + MongoDB</p>
+                    <ul>
+                        <li>Multi-tenant backend with 100+ REST endpoints across 18 routers: auth, employees,
+                            departments, shifts and holidays, leave policies, locations, billing, support and
+                            super-admin.</li>
+                        <li>Face recognition with InsightFace and OpenCV: embeddings from multiple enrolment photos,
+                            best-match lookup to mark attendance.</li>
+                        <li>WebSocket live location tracking and real-time notifications for admins; Firebase push
+                            notifications.</li>
+                        <li>JWT role-based access (super admin, admin, employee), GridFS file storage, PDF reports,
+                            Docker Compose with a GitHub Actions CI/CD pipeline.</li>
+                    </ul>
+                    <span class="tag">FastAPI</span><span class="tag">InsightFace</span><span
+                        class="tag">OpenCV</span><span class="tag">MongoDB</span><span
+                        class="tag">WebSockets</span><span class="tag">Firebase</span><span
+                        class="tag">Docker</span><span class="tag">CI/CD</span>
+                </div>
+
+                <div class="card">
+                    <h3>WhatsApp Sync CRM Dashboard</h3>
+                    <p class="meta">Live admin dashboard · FastAPI + PostgreSQL</p>
+                    <ul>
+                        <li>Chrome extension pushes WhatsApp messages to the backend, which stores them against the
+                            right customer lead and employee.</li>
+                        <li>Live WebSocket feed streams new messages to the admin panel in real time.</li>
+                        <li>Async SQLAlchemy with asyncpg on PostgreSQL; signup/login with JWT and hashed passwords;
+                            QR-code workflow for linking employees.</li>
+                    </ul>
+                    <span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span
+                        class="tag">SQLAlchemy</span><span class="tag">WebSockets</span><span class="tag">JWT</span>
+                </div>
+
+                <div class="card">
+                    <h3>WhatsApp Employee Chat Monitor</h3>
+                    <p class="meta">Meta WhatsApp Cloud API · FastAPI</p>
+                    <ul>
+                        <li>Employees message customers through the API, so every inbound and outbound message is logged
+                            in one place.</li>
+                        <li>Webhook receives customer messages and delivery/read statuses from Meta's Graph API.</li>
+                        <li>Admin endpoints to review conversations, with employee registration per business number;
+                            SQLite for dev, Postgres for production.</li>
+                    </ul>
+                    <span class="tag">FastAPI</span><span class="tag">WhatsApp Cloud API</span><span
+                        class="tag">Webhooks</span><span class="tag">SQLAlchemy</span>
+                </div>
+
+                <div class="card">
+                    <h3>Dream Vantage</h3>
+                    <p class="meta">AI College Discovery Platform · SkyAppz Software</p>
+                    <ul>
+                        <li>Generative AI platform that helps students discover and evaluate colleges.</li>
+                        <li>Dynamic prompt templates built from student profiles, routed through Perplexity AI.</li>
+                        <li>Google Search API and Wikipedia loader to collect official, enriched college data.</li>
+                        <li>LangGraph orchestration for multi-step reasoning and state management, deployed on AWS.</li>
+                    </ul>
+                    <span class="tag">Python</span><span class="tag">LangGraph</span><span class="tag">RAG</span><span
+                        class="tag">Perplexity AI</span><span class="tag">AWS</span>
+                </div>
+
+                <div class="card">
+                    <h3>IntelleFleet</h3>
+                    <p class="meta">Last-Mile Delivery Route Optimization · SkyAppz Software</p>
+                    <ul>
+                        <li>Route optimization for parcel and courier companies to cut route inefficiency.</li>
+                        <li>Minimum-distance routes across multiple stops with Google OR-Tools.</li>
+                        <li>Google Maps API for real road routing and distance matrix.</li>
+                    </ul>
+                    <span class="tag">Python</span><span class="tag">OR-Tools</span><span class="tag">Google Maps
+                        API</span><span class="tag">MongoDB</span>
+                </div>
+
+                <div class="card">
+                    <h3>Document Chatbot with Lead Scoring</h3>
+                    <p class="meta">RAG + OpenAI · ISYWAY Technologies</p>
+                    <ul>
+                        <li>Answers questions from uploaded PDFs using a RAG pipeline (top 3 chunks per query).</li>
+                        <li>pdfplumber ingestion, OpenAI embeddings stored in Pinecone.</li>
+                        <li>Structured prompts classify sentiment (Angry / Complaint / Neutral) and score lead interest
+                            out of 100.</li>
+                        <li>REST endpoints for upload, vector deletion, and grounded or general chat.</li>
+                    </ul>
+                    <span class="tag">FastAPI</span><span class="tag">LangChain</span><span
+                        class="tag">GPT-4o</span><span class="tag">Pinecone</span>
+                </div>
+
+                <div class="card">
+                    <h3>WhatsApp Bulk Messaging System</h3>
+                    <p class="meta">Automation platform · ISYWAY Technologies</p>
+                    <ul>
+                        <li>WhatsApp Web automation with QR login and session persistence.</li>
+                        <li>REST APIs to send bulk messages and files (PDF, image, video) from Excel/CSV contacts.</li>
+                        <li>Configurable send delay, dynamic captions, per-contact attachments.</li>
+                    </ul>
+                    <span class="tag">FastAPI</span><span class="tag">Playwright</span><span class="tag">Pandas</span>
+                </div>
+
+                <div class="card">
+                    <h3>Billing &amp; Invoicing System</h3>
+                    <p class="meta">Payments backend · ISYWAY Technologies</p>
+                    <ul>
+                        <li>Manages clients, subscriptions, invoices, payments, and refunds.</li>
+                        <li>Razorpay and PayPal integration with webhooks for live payment status.</li>
+                        <li>Recurring billing with auto-renewal and grace periods.</li>
+                        <li>JWT auth, role-based access control, and audit logging on MySQL.</li>
+                    </ul>
+                    <span class="tag">FastAPI</span><span class="tag">MySQL</span><span class="tag">JWT</span><span
+                        class="tag">Razorpay</span><span class="tag">PayPal</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="tl">
+                <div class="item">
+                    <h3>AI Developer — SkyAppz Software, Chennai</h3>
+                    <div class="meta">Feb 2026 – Present</div>
+                    <p>Building Generative AI products with LangGraph, RAG, and cloud deployment (Dream Vantage,
+                        IntelleFleet).</p>
+                </div>
+                <div class="item">
+                    <h3>Senior Trainer (Backend Developer) — ISYWAY Technologies, Chennai</h3>
+                    <div class="meta">Apr 2023 – Apr 2025</div>
+                    <p>Built backend and RAG systems in Python and FastAPI: document chatbot, WhatsApp automation, and a
+                        billing platform.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education &amp; Certifications</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>B.Sc. Computer Science</h3>
+                    <p class="meta">A.V.V.M. Sri Pushpam College, Thanjavur · 2016 – 2019</p>
+                </div>
+                <div class="card">
+                    <h3>Certifications</h3>
+                    <ul>
+                        <li>IBM: EDA for Machine Learning</li>
+                        <li>IBM: Supervised and Unsupervised Machine Learning</li>
+                        <li>IBM: Regression &amp; Classification</li>
+                        <li>IBM: Deep Learning and Reinforcement Learning</li>
+                        <li>IBM Machine Learning</li>
+                        <li>Udemy: Generative AI with LangChain &amp; HuggingFace</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <footer id="contact">
+            <strong>Let's talk.</strong> Chennai, India · <a
+                href="mailto:prawingandhi03@gmail.com">prawingandhi03@gmail.com</a> · <a href="tel:+919786581067">+91
+                97865 81067</a> · <a href="https://linkedin.com/in/prawingandhi">linkedin.com/in/prawingandhi</a>
+        </footer>
+    </div>
+</body>
+
+</html>
