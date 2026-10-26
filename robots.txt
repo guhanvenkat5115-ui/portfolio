@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://guhanvenkat5115-ui.github.io/portfolio/sitemap.xml
